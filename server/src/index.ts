@@ -1,14 +1,18 @@
-import express, { Express, Request, Response } from 'express';
-import dotenv from 'dotenv';
+import express from 'express';
 import routes from './routes';
+import bodyParser from 'body-parser';
 
-dotenv.config();
+const app = express();
 
-const app: Express = express();
-const port = process.env.PORT || 3000;
+// Parse JSON bodies
+app.use(bodyParser.json());
 
-app.use('/', routes);
+// Parse URL-encoded bodies
+app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(routes);
+
+const port = process.env.PORT || 4000;
 app.listen(port, () => {
-  console.log(`[server]: Server is running at http://localhost:${port}`);
+  console.log("Running on port: ", port);
 });
