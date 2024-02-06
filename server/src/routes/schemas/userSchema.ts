@@ -5,21 +5,21 @@ const checkUserSchema = checkSchema({
     in: ['body'],
     isLength: {
       errorMessage: 'Name should be at least 2 characters long',
-      options: { min: 2 }
+      options: { min: 2 },
     },
     exists: {
-      errorMessage: 'Name is required'
-    }
+      errorMessage: 'Name is required',
+    },
   },
   email: {
     in: ['body'],
     isEmail: {
-      errorMessage: 'Invalid email'
+      errorMessage: 'Invalid email',
     },
     exists: {
-      errorMessage: 'Email is required'
-    }
-  }
+      errorMessage: 'Email is required',
+    },
+  },
 });
 
-export default checkUserSchema; 
+export default checkUserSchema;
